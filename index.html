@@ -654,31 +654,54 @@
   }
   .about-details-col { padding-top: 8px; }
 
-  /* About stats row */
+  /* Software skills row */
   .about-stats {
     display: flex;
-    gap: 32px;
+    gap: 20px;
+    flex-wrap: wrap;
     margin: 28px 0 28px;
     padding: 24px 0;
     border-top: 1px solid rgba(255,107,0,0.1);
     border-bottom: 1px solid rgba(255,107,0,0.1);
   }
-  .about-stat { text-align: center; }
-  .about-stat-num {
-    display: block;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 30px;
-    font-weight: 900;
-    color: var(--accent);
-    line-height: 1;
-    margin-bottom: 4px;
+  .about-stat {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 16px;
+    border: 1px solid rgba(255,107,0,0.1);
+    background: rgba(255,107,0,0.03);
+    border-radius: 4px;
+    transition: all 0.3s;
+    cursor: default;
+    min-width: 72px;
+  }
+  .about-stat:hover {
+    border-color: var(--accent);
+    background: rgba(255,107,0,0.08);
+    transform: translateY(-4px);
+  }
+  .about-stat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .about-stat-icon svg {
+    filter: drop-shadow(0 2px 8px rgba(255,107,0,0.2));
+    transition: filter 0.3s;
+  }
+  .about-stat:hover .about-stat-icon svg {
+    filter: drop-shadow(0 4px 16px rgba(255,107,0,0.5));
   }
   .about-stat-label {
     font-size: 9px;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     color: var(--gray);
+    line-height: 1.4;
   }
 
   /* About contact items */
@@ -703,7 +726,18 @@
     background: rgba(255,107,0,0.06);
     transform: translateX(6px);
   }
-  .aci-icon { font-size: 20px; flex-shrink: 0; }
+  .aci-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+    transition: filter 0.3s, transform 0.3s;
+  }
+  .about-contact-item:hover .aci-icon {
+    filter: drop-shadow(0 4px 16px rgba(255,107,0,0.4));
+    transform: scale(1.1);
+  }
   .aci-label {
     font-size: 9px;
     font-weight: 700;
@@ -1031,6 +1065,35 @@
     .insta-grid { grid-template-columns: repeat(2, 1fr); }
     .section-header { flex-direction: column; align-items: flex-start; gap: 20px; }
   }
+
+  .contact-item-link {
+    text-decoration: none;
+    display: flex;
+    transition: all 0.3s;
+  }
+  .contact-item-link:hover {
+    transform: translateX(8px);
+    border-color: rgba(255,107,0,0.4) !important;
+    background: rgba(255,107,0,0.05);
+  }
+  .contact-item-link .c-value {
+    color: var(--white) !important;
+  }
+  .svg-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important;
+    font-size: unset !important;
+  }
+  .svg-icon svg {
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+    transition: filter 0.3s, transform 0.3s;
+  }
+  .contact-item-link:hover .svg-icon svg {
+    filter: drop-shadow(0 4px 16px rgba(255,107,0,0.5));
+    transform: scale(1.1);
+  }
 </style>
 </head>
 <body>
@@ -1268,60 +1331,64 @@
         From <strong>viral Instagram Reels</strong> to full brand campaigns, I've helped creators and brands grow their audience through content that actually connects. Based in Pakistan, working with clients <strong>worldwide</strong>.
       </p>
 
-      <!-- Stats row -->
+      <!-- Software Skills row -->
       <div class="about-stats reveal">
         <div class="about-stat">
-          <span class="about-stat-num">3+</span>
-          <span class="about-stat-label">Years Exp.</span>
+          <span class="about-stat-icon">
+            <!-- Premiere Pro icon SVG -->
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="36" rx="6" fill="#2B0B3F"/>
+              <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" font-size="10" font-weight="900" fill="#9999FF" font-family="Arial">Pr</text>
+            </svg>
+          </span>
+          <span class="about-stat-label">Premiere<br>Pro</span>
         </div>
         <div class="about-stat">
-          <span class="about-stat-num">50+</span>
-          <span class="about-stat-label">Projects</span>
+          <span class="about-stat-icon">
+            <!-- After Effects -->
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="36" rx="6" fill="#00005B"/>
+              <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" font-size="10" font-weight="900" fill="#9999FF" font-family="Arial">Ae</text>
+            </svg>
+          </span>
+          <span class="about-stat-label">After<br>Effects</span>
         </div>
         <div class="about-stat">
-          <span class="about-stat-num">30+</span>
-          <span class="about-stat-label">Clients</span>
+          <span class="about-stat-icon">
+            <!-- DaVinci Resolve -->
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="36" rx="6" fill="#141414"/>
+              <circle cx="18" cy="18" r="9" fill="none" stroke="#ff6b00" stroke-width="2"/>
+              <circle cx="18" cy="18" r="3" fill="#ff6b00"/>
+            </svg>
+          </span>
+          <span class="about-stat-label">DaVinci<br>Resolve</span>
         </div>
         <div class="about-stat">
-          <span class="about-stat-num">1M+</span>
-          <span class="about-stat-label">Views</span>
+          <span class="about-stat-icon">
+            <!-- CapCut -->
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="36" rx="6" fill="#000000"/>
+              <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" font-size="8" font-weight="900" fill="#ffffff" font-family="Arial">CAP</text>
+            </svg>
+          </span>
+          <span class="about-stat-label">Cap<br>Cut</span>
+        </div>
+        <div class="about-stat">
+          <span class="about-stat-icon">
+            <!-- Photoshop -->
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="36" rx="6" fill="#001E36"/>
+              <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" font-size="10" font-weight="900" fill="#31A8FF" font-family="Arial">Ps</text>
+            </svg>
+          </span>
+          <span class="about-stat-label">Adobe<br>Photoshop</span>
         </div>
       </div>
 
-      <div class="skills-list reveal">
-        <span class="skill-tag">Premiere Pro</span>
-        <span class="skill-tag">After Effects</span>
-        <span class="skill-tag">DaVinci Resolve</span>
-        <span class="skill-tag">Color Grading</span>
-        <span class="skill-tag">Motion Graphics</span>
-        <span class="skill-tag">Sound Design</span>
-        <span class="skill-tag">Reels Editing</span>
-      </div>
+      
 
-      <!-- Contact info inline -->
-      <div class="about-contact reveal">
-        <a href="https://wa.me/923488289861" target="_blank" class="about-contact-item">
-          <span class="aci-icon">💬</span>
-          <div>
-            <div class="aci-label">WhatsApp</div>
-            <div class="aci-value">+92-348-8289861</div>
-          </div>
-        </a>
-        <a href="mailto:fahimhaider687@gmail.com" class="about-contact-item">
-          <span class="aci-icon">✉️</span>
-          <div>
-            <div class="aci-label">Gmail</div>
-            <div class="aci-value">fahimhaider687@gmail.com</div>
-          </div>
-        </a>
-        <a href="https://www.instagram.com/edit.oria07" target="_blank" class="about-contact-item">
-          <span class="aci-icon">📸</span>
-          <div>
-            <div class="aci-label">Instagram</div>
-            <div class="aci-value">@edit.oria07</div>
-          </div>
-        </a>
-      </div>
+      
 
       <a href="#contact" class="btn-primary reveal" style="display:inline-block;margin-top:32px;"><span>Let's Work Together</span></a>
     </div>
@@ -1395,34 +1462,82 @@
     </p>
 
     <div class="contact-info reveal">
-      <div class="contact-item">
-        <div class="icon">📸</div>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/923488289861" target="_blank" class="contact-item contact-item-link">
+        <div class="icon svg-icon">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="#25D366"/>
+            <path d="M16 5C10.477 5 6 9.477 6 15c0 1.9.53 3.68 1.45 5.2L6 27l6.97-1.42A10 10 0 0016 27c5.523 0 10-4.477 10-10S21.523 5 16 5zm5.3 14.1c-.22.62-1.3 1.18-1.78 1.22-.48.04-.93.23-3.14-.66-2.66-1.08-4.35-3.8-4.48-3.97-.13-.18-1.06-1.41-1.06-2.69s.67-1.9.91-2.16c.24-.26.52-.32.7-.32l.5.01c.16 0 .38-.06.59.45l.85 2.07c.07.17.12.37.01.57l-.32.47-.48.5c-.13.13-.27.28-.12.54.16.26.7 1.15 1.5 1.86.99.88 1.83 1.15 2.09 1.28.26.13.41.11.56-.07l.58-.69c.16-.2.31-.13.52-.05l1.82.86c.2.1.34.14.38.22.05.08.05.48-.17 1.1z" fill="white"/>
+          </svg>
+        </div>
+        <div>
+          <div class="c-label">WhatsApp</div>
+          <div class="c-value">+92-348-8289861</div>
+        </div>
+      </a>
+
+      <!-- Gmail -->
+      <a href="mailto:fahimhaider687@gmail.com" class="contact-item contact-item-link">
+        <div class="icon svg-icon">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="#fff"/>
+            <path d="M6 11a2 2 0 012-2h16a2 2 0 012 2v10a2 2 0 01-2 2H8a2 2 0 01-2-2V11z" fill="#F1F1F1"/>
+            <path d="M6 11l10 7 10-7" stroke="none" fill="none"/>
+            <path d="M8 9h16L16 16 8 9z" fill="#EA4335"/>
+            <path d="M6 11v10a2 2 0 002 2h3V14L6 11z" fill="#34A853"/>
+            <path d="M26 11v10a2 2 0 01-2 2h-3V14l5-3z" fill="#4285F4"/>
+            <path d="M6 11l5 3v8H8a2 2 0 01-2-2V11z" fill="#34A853"/>
+            <path d="M26 11l-5 3v8h3a2 2 0 002-2V11z" fill="#4285F4"/>
+            <path d="M8 9l8 7 8-7H8z" fill="#EA4335"/>
+            <path d="M6 11l10 7 10-7" stroke="#fff" stroke-width="0.3" fill="none"/>
+          </svg>
+        </div>
+        <div>
+          <div class="c-label">Gmail</div>
+          <div class="c-value">fahimhaider687@gmail.com</div>
+        </div>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/edit.oria07" target="_blank" class="contact-item contact-item-link">
+        <div class="icon svg-icon">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="ig2" cx="30%" cy="107%" r="150%">
+                <stop offset="0%" stop-color="#fdf497"/>
+                <stop offset="5%" stop-color="#fdf497"/>
+                <stop offset="45%" stop-color="#fd5949"/>
+                <stop offset="60%" stop-color="#d6249f"/>
+                <stop offset="90%" stop-color="#285AEB"/>
+              </radialGradient>
+            </defs>
+            <rect width="32" height="32" rx="8" fill="url(#ig2)"/>
+            <rect x="9" y="9" width="14" height="14" rx="4" stroke="white" stroke-width="1.8" fill="none"/>
+            <circle cx="16" cy="16" r="3.5" stroke="white" stroke-width="1.8" fill="none"/>
+            <circle cx="21.2" cy="10.8" r="1" fill="white"/>
+          </svg>
+        </div>
         <div>
           <div class="c-label">Instagram</div>
           <div class="c-value">@edit.oria07</div>
         </div>
-      </div>
+      </a>
+
+      <!-- Location -->
       <div class="contact-item">
-        <div class="icon">💬</div>
-        <div>
-          <div class="c-label">WhatsApp</div>
-          <div class="c-value"><a href="https://wa.me/923488289861" target="_blank" style="color:var(--white);text-decoration:none;">+92-348-8289861</a></div>
+        <div class="icon svg-icon">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="rgba(255,107,0,0.15)"/>
+            <path d="M16 7a7 7 0 017 7c0 4.5-7 13-7 13S9 18.5 9 14a7 7 0 017-7zm0 4a3 3 0 100 6 3 3 0 000-6z" fill="#ff6b00"/>
+          </svg>
         </div>
-      </div>
-      <div class="contact-item">
-        <div class="icon">✉️</div>
-        <div>
-          <div class="c-label">Gmail</div>
-          <div class="c-value"><a href="mailto:fahimhaider687@gmail.com" style="color:var(--white);text-decoration:none;">fahimhaider687@gmail.com</a></div>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="icon">📍</div>
         <div>
           <div class="c-label">Based In</div>
           <div class="c-value">Pakistan 🇵🇰</div>
         </div>
       </div>
+
     </div>
   </div>
 
