@@ -1094,6 +1094,163 @@
     filter: drop-shadow(0 4px 16px rgba(255,107,0,0.5));
     transform: scale(1.1);
   }
+
+  /* ── SHOWREEL SECTION ── */
+  #showreel {
+    padding: 100px 60px;
+    background: var(--dark2);
+    border-top: 1px solid rgba(255,107,0,0.08);
+    border-bottom: 1px solid rgba(255,107,0,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  #showreel::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,107,0,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .showreel-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .showreel-wrap {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    aspect-ratio: 16/9;
+    background: #000;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,107,0,0.15);
+  }
+  /* Thumbnail overlay */
+  .showreel-thumb {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #1a0001 0%, #270001 50%, #3a1000 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.4s;
+    z-index: 10;
+  }
+  .showreel-thumb.hidden { opacity: 0; pointer-events: none; }
+  .showreel-thumb::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(135deg, rgba(255,107,0,0.03) 0%, transparent 60%),
+      repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,107,0,0.015) 40px, rgba(255,107,0,0.015) 41px),
+      repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,107,0,0.015) 40px, rgba(255,107,0,0.015) 41px);
+  }
+  /* Film strip top & bottom */
+  .showreel-thumb::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 36px;
+    background: repeating-linear-gradient(90deg, #000 0px, #000 20px, transparent 20px, transparent 34px);
+    opacity: 0.5;
+  }
+  .showreel-film-bottom {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 36px;
+    background: repeating-linear-gradient(90deg, #000 0px, #000 20px, transparent 20px, transparent 34px);
+    opacity: 0.5;
+    z-index: 11;
+    pointer-events: none;
+  }
+  .showreel-center {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  /* Big play button */
+  .showreel-play {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    box-shadow: 0 0 0 0 rgba(255,107,0,0.4);
+    animation: pulse-ring 2s ease-in-out infinite;
+  }
+  .showreel-thumb:hover .showreel-play {
+    transform: scale(1.12);
+    background: var(--mid);
+  }
+  .showreel-play svg { width: 32px; fill: #fff; margin-left: 6px; }
+  @keyframes pulse-ring {
+    0%   { box-shadow: 0 0 0 0 rgba(255,107,0,0.5); }
+    70%  { box-shadow: 0 0 0 24px rgba(255,107,0,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,107,0,0); }
+  }
+  .showreel-cta-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  /* Name watermark on thumbnail */
+  .showreel-watermark {
+    position: absolute;
+    bottom: 50px;
+    right: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,107,0,0.3);
+    z-index: 3;
+  }
+  /* Actual iframe */
+  .showreel-iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    z-index: 5;
+  }
+  /* Side decorations */
+  .showreel-deco {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .showreel-deco.left { left: 0; }
+  .showreel-deco.right { right: 0; }
+  .showreel-deco span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,107,0,0.2);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+  @media (max-width: 900px) {
+    #showreel { padding: 60px 24px; }
+    .showreel-deco { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -1208,6 +1365,61 @@
     <div class="stat-label">Views Generated</div>
   </div>
 </section>
+
+
+<!-- SHOWREEL -->
+<section id="showreel">
+  <div class="showreel-header reveal">
+    <div class="section-tag" style="justify-content:center;margin-bottom:16px;">Showreel 2025</div>
+    <h2 class="section-title" style="text-align:center;">WATCH MY <span class="acc">REEL</span></h2>
+    <p style="text-align:center;color:var(--gray);font-size:14px;margin-top:16px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.8;">
+      3+ years of editing — cuts, grades, and stories that actually hit.
+    </p>
+  </div>
+
+  <div class="showreel-wrap reveal">
+    <!-- Film strip bottom -->
+    <div class="showreel-film-bottom"></div>
+
+    <!-- Thumbnail / Click overlay -->
+    <div class="showreel-thumb" id="showreelThumb" onclick="playShowreel()">
+      <div class="showreel-center">
+        <div class="showreel-play">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <div class="showreel-cta-text">Play Showreel</div>
+      </div>
+      <div class="showreel-watermark">Fahim Haider · @edit.oria07</div>
+    </div>
+
+    <!-- YouTube iframe (loads on click) -->
+    <iframe
+      id="showreelFrame"
+      class="showreel-iframe"
+      src=""
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- Side decorations -->
+  <div class="showreel-deco left" style="left:10px;">
+    <span>Fahim Haider</span>
+  </div>
+  <div class="showreel-deco right" style="right:10px;">
+    <span>edit.oria07</span>
+  </div>
+</section>
+
+<script>
+function playShowreel() {
+  var thumb = document.getElementById('showreelThumb');
+  var frame = document.getElementById('showreelFrame');
+  // Using first Instagram reel as showreel — replace VIDEO_ID with YouTube ID when available
+  frame.src = 'https://www.instagram.com/reel/DVCkEqkCj7b/embed/';
+  thumb.classList.add('hidden');
+}
+</script>
 
 <!-- WORK / REELS -->
 <section id="work">
